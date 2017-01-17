@@ -1,0 +1,11 @@
+main.mdl-layout__content, div.mdl-layout.mdl-js-layout, div.mdl-card.mdl-shadow--4dp.full, .getmdl-select .mdl-menu__container{
+  overflow: visible !important;
+}
+
+.getmdl-select.unit{
+  width: 100px;
+}
+
+.mdl-card__media {
+  padding: 24px;
+}

@@ -1,0 +1,72 @@
+link rel="stylesheet" href="/css/list.css"
+
+.mdl-card.mdl-shadow--4dp.full.add_item
+  form action="/list/#{@list.id}/add_item" method="post"
+    .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+      input.mdl-textfield__input type="text" id="add_item" name="item_name"
+      label.mdl-textfield__label for="add_item" Add Item
+
+    button id="category_select"
+
+
+.mdl-card.mdl-shadow--4dp.full
+
+  .mdl-card__title
+    h2.mdl-card__title-text On list
+    form id="clear" action="/list/#{@list.id}/clear" method="post"
+    i.material-icons.mdl-card__title-action onclick='document.getElementById("clear").submit();' clear
+
+  .list-divider
+
+  .mdl-card__media
+
+    - if not @list.categories.reject{|c| c.items.select{|item| not item.crossed}.empty?}.empty?
+      -for category in @list.categories.reject{|c| c.items.select{|item| not item.crossed}.empty?}
+        span.list-subheader =category.name
+        -for item in category.items.select{|item| not item.crossed}
+          form id="form-item-#{item.id}" action="/list/#{@list.id}/item/#{item.id}/cross" method="post"
+            li.mdl-list__item.mdl-list__item--two-line onclick='document.getElementById("form-item-#{item.id}").submit();'
+              span.mdl-list__item-primary-content
+                span.issue-title =item.name
+                span.mdl-list__item-sub-title.issue-username ="#{item.unit == '' ? '' : item.value.to_s.sub(/\.0+/, '')} #{item.value.to_s == '' ? '' : item.unit}"
+
+              span.mdl-list__item-secondary-action
+                a href="/item/#{item.id}"
+                  i.material-icons edit
+
+          - unless item == @list.categories.reject{|c| c.items.empty?}.last.items.last
+            .list-divider.indented
+
+    - else
+        span.no-items You have no items!
+
+
+
+.mdl-card.mdl-shadow--4dp.full
+
+  .mdl-card__title
+    h2.mdl-card__title-text Crossed
+    form id="delete_crossed" action="/list/#{@list.id}/delete_crossed" method="post"
+    i.material-icons.mdl-card__title-action onclick='document.getElementById("delete_crossed").submit();' delete
+
+  .list-divider
+
+  .mdl-card__media
+
+    - unless @list.categories.reject{|c| c.items.select{|item| item.crossed}.empty?}.empty?
+      -for category in @list.categories.reject{|c| c.items.select{|item| item.crossed}.empty?}
+        span.list-subheader =category.name
+        ul.mdl-list
+        -for item in category.items.select{|item|item.crossed}
+          form id="form-item-#{item.id}" action="/list/#{@list.id}/item/#{item.id}/cross" method="post"
+            li.mdl-list__item.mdl-list__item--two-line onclick='document.getElementById("form-item-#{item.id}").submit();'
+              span.mdl-list__item-primary-content
+                span.issue-title =item.name
+                / span.mdl-list__item-sub-title.issue-username =list.users.map{|u| u.name}.join(", ")
+
+              span.mdl-list__item-secondary-action
+
+          - unless item == @list.categories.reject{|c| c.items.empty?}.last.items.last
+            .list-divider.indented
+    -else
+        span.no-items You have no crossed items!

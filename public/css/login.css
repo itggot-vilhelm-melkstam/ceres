@@ -1,0 +1,29 @@
+body {
+	height: 100%;
+}
+
+.mdl-card {
+	margin: 0 auto;
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+
+}
+
+.mdl-layout__container {
+	position: relative;
+}
+
+.mdl-layout__header-row {
+	padding: 0;
+
+	font-size: 24px;
+
+	display: block;
+	line-height: 64px;
+	text-align: center;
+}
+
+.page-content {
+	padding: 16px;
+}

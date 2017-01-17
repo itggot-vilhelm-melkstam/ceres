@@ -1,0 +1,64 @@
+doctype html
+html
+	head
+		title ceres
+
+		meta name="viewport" content="width=device-width, initial-scale=1.0"
+
+		link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"
+		link rel="stylesheet" href="/css/material.min.css"
+		script defer="true" src="/js/material.min.js"
+
+		link rel="stylesheet" href="https://cdn.rawgit.com/CreativeIT/getmdl-select/master/getmdl-select.min.css"
+		script defer="true" src="https://cdn.rawgit.com/CreativeIT/getmdl-select/master/getmdl-select.min.js"
+
+		link rel="stylesheet" href="/css/layout.css"
+
+	body
+		.mdl-js-snackbar.mdl-snackbar#snackbarcontainer
+			.mdl-snackbar__text
+			button.mdl-snackbar__action type="button"
+
+		.mdl-layout.mdl-js-layout.mdl-layout--fixed-header.mdl-layout--fixed-drawer
+			header.mdl-layout__header
+				.mdl-layout__header-row
+					.mdl-layout-spacer
+						span.mdl-layout-title =@name
+
+
+			.mdl-layout__drawer
+				nav.mdl-navigation
+					.drawer-user
+						i.material-icons.avatar account_circle
+						span#name =@user.name
+						span#email =@user.email
+
+					a.mdl-navigation__link href="/lists"
+						i.material-icons list
+						| Lists
+					a.mdl-navigation__link href="/settings"
+						i.material-icons settings
+						| Settings
+
+					.navigation-bottom
+						form action="/logout" method="post"
+							input.mdl-button.mdl-js-button.mdl-js-ripple-effect type="submit" value="Logga ut"
+						span Copyright © Vilhelm Melkstam 2016
+
+			main.mdl-layout__content
+				div.page-content
+					== yield
+
+
+javascript:
+	r(function(){
+		'use strict';
+		var flashes = "#{flash[:notice].join('¤') rescue ''}".split("¤").filter(Boolean);
+		var snackbarContainer = document.querySelector('#snackbarcontainer');
+		for (var a = 0; a < flashes.length; a++){
+			console.log(flashes[a])
+			var data = {message: flashes[a]};
+			snackbarContainer.MaterialSnackbar.showSnackbar(data);
+		}
+	});
+	function r(f){/in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}

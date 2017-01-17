@@ -1,0 +1,55 @@
+link rel="stylesheet" href="/css/item.css"
+
+.mdl-card.mdl-shadow--4dp.full
+
+  .mdl-card__title
+    h2.mdl-card__title-text Item
+
+  .list-divider
+
+  .mdl-card__media
+    form action="/item/#{@item.id}/update" method="post"
+      .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label#name
+        input.mdl-textfield__input#item_name type="text" name="name" value="#{@item.name}"
+        label.mdl-textfield__label for="item_name" Name
+
+      .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label#amount
+        input.mdl-textfield__input#item_value value="#{@item.value.to_s.sub(/\.0+/, '')}" type="text" name="value" pattern="-?[0-9]*(\.[0-9]+)?"
+        label.mdl-textfield__label for="item_value" Amount
+        span.mdl-textfield__error Input is not a number
+
+      .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.getmdl-select.getmdl-select__fix-height.getmdl-select__fullwidth.unit
+        input#unit.mdl-textfield__input name="unit" type="text" value="#{@item.unit}" readonly="true" tabIndex="-1" data-val="#{@item.unit}"
+          label for="unit"
+            i.mdl-icon-toggle__label.material-icons keyboard_arrow_down
+          label.mdl-textfield__label for="unit" Unit
+          ul.mdl-menu.mdl-menu--bottom-left.mdl-js-menu for="unit"
+            <li class="mdl-menu__item" data-val=""></li>
+            <li class="mdl-menu__item" data-val="pcs">pcs</li>
+            <li class="mdl-menu__item" data-val="kg">kg</li>
+            <li class="mdl-menu__item" data-val="hg">hg</li>
+            <li class="mdl-menu__item" data-val="g">g</li>
+            <li class="mdl-menu__item" data-val="l">l</li>
+            <li class="mdl-menu__item" data-val="cl">cl</li>
+            <li class="mdl-menu__item" data-val="ml">ml</li>
+
+      .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.getmdl-select.getmdl-select__fix-height.category
+        input#category.mdl-textfield__input name="category" type="text" value="#{@item.category.name}" readonly="true" tabIndex="-1" data-val="#{@item.category.name}"
+          label for="category"
+            i.mdl-icon-toggle__label.material-icons keyboard_arrow_down
+          label.mdl-textfield__label for="Category" Category
+          ul.mdl-menu.mdl-menu--bottom-left.mdl-js-menu for="category"
+            -for category in @item.category.list.categories
+              <li class="mdl-menu__item" data-val="#{category.id}" value="#{category.id}">#{category.name}</li>
+
+      .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label#new_category
+        input.mdl-textfield__input#item_name type="text" name="new_category" value=""
+        label.mdl-textfield__label for="new_category" New Category
+
+
+
+
+
+
+
+      button.mdl-button.mdl-js-button.mdl-button--raised.mdl-button--colored type="submit" Save

@@ -1,0 +1,97 @@
+
+/* mdl-card__title */
+
+.full > .mdl-card__title > .mdl-card__title-text {
+  height: 31px;
+}
+
+.full > .mdl-card__title > .mdl-textfield {
+  padding: 0;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+
+.full > .mdl-card__title > .mdl-textfield > label {
+  bottom: 0;
+}
+
+i.material-icons.mdl-card__title-action {
+  color: rgba(0, 0, 0, 0.54);
+  position: absolute;
+  right: 24px;
+}
+
+.add_item {
+  height: 56px;
+}
+
+.add_item .mdl-textfield {
+  width: calc(100% - 32px);
+  margin-left: 16px;
+}
+
+
+/* mdl-card__media */
+
+.list-subheader {
+  display: block;
+  margin: 16px;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.mdl-list__item {
+  cursor: pointer;
+}
+
+.full > .mdl-card__media .mdl-list__item-primary-content {
+ width: calc(100% - 100px);
+}
+
+
+.issue-title, .issue-username, .issue-description {
+  width: calc(100% - 72x);
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.issue-title{
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.issue-username {
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 600;
+}
+
+.issue-description {
+  font-size: 14px;
+  line-height: 16px;
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.full > .mdl-card__media .mdl-list__item-secondary-info {
+  height: 52px;
+  width: 100px;
+  text-align: right;
+}
+
+.mdl-list__item:hover{
+  background-color: #eee;
+  cursor: pointer;
+}
+
+.no-items {
+  display: block;
+  text-align: left;
+  margin: 16px;
+}
+
+.mdl-list__item-secondary-action > a {
+  color: rgba(0, 0, 0, 0.54);
+}

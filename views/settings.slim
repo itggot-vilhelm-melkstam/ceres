@@ -1,0 +1,22 @@
+link rel="stylesheet" href="/css/settings.css"
+
+.mdl-card.mdl-shadow--4dp.full
+
+  .mdl-card__title
+    h2.mdl-card__title-text Settings
+
+  .list-divider
+
+  .mdl-card__media
+    form action="/settings/#{@user.id}/update" method="post"
+      .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label#name
+        input.mdl-textfield__input#item_name type="text" name="name" value="#{@user.name}"
+        label.mdl-textfield__label for="item_name" Name
+
+      .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label#email
+        input.mdl-textfield__input#user_email value="#{@user.email}" type="email" name="email"
+        label.mdl-textfield__label for="item_value" Email
+        span.mdl-textfield__error Input is not an E-Mail
+
+
+      button.mdl-button.mdl-js-button.mdl-button--raised.mdl-button--colored type="submit" Save

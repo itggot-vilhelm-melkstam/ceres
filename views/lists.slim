@@ -1,0 +1,39 @@
+link rel="stylesheet" href="/css/lists.css"
+
+/ Issue card
+.mdl-card.mdl-shadow--4dp.full
+
+  .mdl-card__title
+    h2.mdl-card__title-text Lists
+
+    form#new_list action="/lists/new_list" method="post"
+      .mdl-textfield.mdl-js-textfield.mdl-textfield--expandable.mdl-textfield--floating-label
+        label.mdl-button.mdl-js-button.mdl-button--icon for="list_name"
+          i.material-icons add
+        .mdl-textfield__expandable-holder
+          input.mdl-textfield__input type="text" id="list_name" name="list_name"
+          label.mdl-textfield__label for="list_name" New List
+
+
+  .list-divider
+
+  .mdl-card__media
+
+    -unless @lists.empty?
+      ul.mdl-list
+      -for list in @lists
+        a href="/list/#{list.id}"
+          li.mdl-list__item.mdl-list__item--two-line
+            span.mdl-list__item-primary-content
+              i.material-icons.mdl-list__item-avatar person
+              span.issue-title =list.name
+              span.mdl-list__item-sub-title.issue-username =list.users.map{|u| u.name}.join(", ")
+
+            span.mdl-list__item-secondary-action
+
+
+
+        - unless list == @lists.last
+          .list-divider.indented
+    - else
+      span.no-issues Du har inga listor

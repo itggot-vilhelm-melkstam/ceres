@@ -1,0 +1,55 @@
+doctype html
+html
+  head
+    title Ceres | Login
+
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+
+    link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    link rel="stylesheet" href="/css/material.min.css"
+    script defer="true" src="/js/material.min.js"
+
+    link rel="stylesheet" href="/css/login.css"
+
+  body
+    .mdl-card.mdl-shadow--4dp
+
+
+      .mdl-layout.mdl-js-layout.mdl-layout--fixed-header.mdl-layout--fixed-tabs
+        header.mdl-layout__header
+          .mdl-layout__header-row
+            span.mdl-layout__header-row ceres
+            .mdl-layout-spacer
+          .mdl-layout__tab-bar.mdl-js-ripple-effect
+            a.mdl-layout__tab.is-active href="#login-tab" Log in
+            a.mdl-layout__tab href="#register-tab" Register
+
+        main.mdl-layout__content
+          section.mdl-layout__tab-panel.is-active id="login-tab"
+            .page-content
+              form action="/login" method="post"
+                .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+                  input.mdl-textfield__input type="email" name="email" id="email"
+                  label.mdl-textfield__label for="email" E-Mail
+                  span.mdl-textfield__error Not a valid E-Mail
+                .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+                  input.mdl-textfield__input type="password" name="password" id="password"
+                  label.mdl-textfield__label for="password" Password
+                button.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-button--accent type="submit" Log in
+          section.mdl-layout__tab-panel id="register-tab"
+            .page-content
+              form action="/register" method="post"
+                .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+                  input.mdl-textfield__input type="email" name="email" id="email"
+                  label.mdl-textfield__label for="email" E-Mail
+                  span.mdl-textfield__error Not a valid E-Mail
+                .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+                  input.mdl-textfield__input type="text" name="name" id="name"
+                  label.mdl-textfield__label for="name" Name
+                .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+                  input.mdl-textfield__input type="password" name="password" id="password"
+                  label.mdl-textfield__label for="password" Password
+                .mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+                  input.mdl-textfield__input type="password" name="password-repeat" id="password-repeat"
+                  label.mdl-textfield__label for="password-repeat" Repeat Password
+                button.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-button--accent type="submit" Register
