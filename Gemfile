@@ -12,6 +12,7 @@ gem 'slim'
 gem 'tilt', '~> 1.4.1' #temporary fix
 gem 'racksh'
 gem 'faker'
+gem 'rake'
 
 # Used during local development (on your own machine)
 group :development do
@@ -24,12 +25,12 @@ group :development do
 end
 
 # # Used during production (on Heroku), when your application is 'live'
-# group :production dogem insta
+group :production do
 
-#   # Use Postgresql
-#   gem 'dm-postgres-adapter', group: :production
+  # Use Postgresql
+  gem 'dm-postgres-adapter', group: :production
 
-# end
+end
 
 # Used when running tests (rake test:[acceptance|models|routes])
 group :test do
