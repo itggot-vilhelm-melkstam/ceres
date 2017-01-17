@@ -1,3 +1,7 @@
+#digitalocean:
+#root
+#ceresroot
+
 # Load all models
 Dir["./models/*.rb"].each {|model| require model}
 

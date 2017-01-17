@@ -1,5 +1,5 @@
 # Tell bundler where to fetch gems
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 # Tell heroku and bundler which version of ruby to use
 ruby '2.3.1'
@@ -28,7 +28,7 @@ end
 group :production do
 
   # Use Postgresql
-  gem 'dm-postgres-adapter', group: :production
+  # gem 'dm-postgres-adapter', group: :production
 
 end
 
