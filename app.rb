@@ -41,6 +41,7 @@ class App < Sinatra::Base
     end
   end
 
+
   get "/item/:id" do |id|
     if session[:user_id] and (Item.get(id).category.list.users.include? User.get(session[:user_id]))
       @user = User.get(session[:user_id])
@@ -50,9 +51,6 @@ class App < Sinatra::Base
       redirect '/'
     end
   end
-
-
-
 
   post '/settings/:id/update' do
     if session[:user_id]
@@ -68,6 +66,7 @@ class App < Sinatra::Base
     if session[:user_id]
       list = List.create(name: params["list_name"])
       UserList.create(user_id: session[:user_id], list: list)
+      Category.create(list_id: list.id, name: "Uncategorized")
       redirect back
     else
       redirect '/'
