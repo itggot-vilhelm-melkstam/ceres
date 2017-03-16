@@ -85,7 +85,7 @@ class App < Sinatra::Base
 
   post '/list/:id/share' do |id|
     if session[:user_id] and (List.get(id).users.include? User.get(session[:user_id]))
-      UserList.create(list_id: id, user: User.first(:email => params["share"]).id)
+      UserList.create(list_id: id, user: User.first(:email => params["share"]))
       redirect back
     else
       redirect '/'
